@@ -988,23 +988,11 @@
         const children = childIds.map(id => NODE_MAP[id]).filter(Boolean);
         if (children.length === 0) return;
 
-        // Origin: midpoint between parent and spouse
+        // Origin: midpoint of the spouse line between parent and their partner
         const spouseId = SPOUSE_MAP[parentId];
         const spouseNode = spouseId ? NODE_MAP[spouseId] : null;
         const originX = spouseNode ? (parentNode.x + spouseNode.x) / 2 : parentNode.x;
-        const originY = parentNode.y + NODE_H_BASE;
-
-        // Draw a short "tap" line from spouse line down to stem origin
-        if (spouseNode) {
-          const tap = document.createElementNS(NS, 'line');
-          tap.setAttribute('x1', originX);
-          tap.setAttribute('y1', parentNode.y + NODE_H_BASE / 2);
-          tap.setAttribute('x2', originX);
-          tap.setAttribute('y2', originY);
-          tap.setAttribute('stroke', 'var(--link-color)');
-          tap.setAttribute('stroke-width', 1);
-          parentGroup.appendChild(tap);
-        }
+        const originY = parentNode.y + NODE_H_BASE / 2; // spouse line level
 
         // Bus bar Y: midpoint between parent bottom and children top
         const childY = children[0].y;
