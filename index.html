@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kinship — Vietnamese &amp; Chinese Family Terms</title>
+  <meta name="description" content="Visual reference for Vietnamese and Chinese (Mandarin) kinship terminology — all family terms on one page.">
+  <meta property="og:title" content="Kinship — Vietnamese & Chinese Family Terms">
+  <meta property="og:description" content="Visual family tree showing kinship terms in Vietnamese and Chinese with English translations.">
+  <meta property="og:type" content="website">
   <style>
     /* Task 2: Flexoki palette + theme system */
     :root {
@@ -155,6 +159,31 @@
     .node rect { transition: stroke-width 0.15s; }
     .node:hover rect { stroke-width: 2.5; }
     .node text { pointer-events: none; user-select: none; }
+
+    @media (max-width: 1024px) {
+      .tree-container::after {
+        content: '\2192 scroll';
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: var(--tx-3);
+        font-size: 0.75rem;
+        opacity: 0.6;
+      }
+      .tree-container { position: relative; }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .controls {
+        margin-left: 0;
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>
