@@ -262,7 +262,7 @@
     const KINSHIP = [
       // ── Gen -1: Great-grandparents ──────────────────────────────────────
       {
-        id: 'paternal-great-grandfather', gen: -1, side: 'paternal', x: 570, y: 40,
+        id: 'paternal-great-grandfather', gen: -1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: 'paternal great-grandfather',
           vi: { term: 'ông cụ nội', note: 'cụ = great-grand generation' },
@@ -271,7 +271,7 @@
         }
       },
       {
-        id: 'paternal-great-grandmother', gen: -1, side: 'paternal', x: 820, y: 40,
+        id: 'paternal-great-grandmother', gen: -1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: 'paternal great-grandmother',
           vi: { term: 'bà cụ nội', note: null },
@@ -280,7 +280,7 @@
         }
       },
       {
-        id: 'maternal-great-grandfather', gen: -1, side: 'maternal', x: 2530, y: 40,
+        id: 'maternal-great-grandfather', gen: -1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: 'maternal great-grandfather',
           vi: { term: 'ông cụ ngoại', note: null },
@@ -289,7 +289,7 @@
         }
       },
       {
-        id: 'maternal-great-grandmother', gen: -1, side: 'maternal', x: 2780, y: 40,
+        id: 'maternal-great-grandmother', gen: -1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: 'maternal great-grandmother',
           vi: { term: 'bà cụ ngoại', note: null },
@@ -300,7 +300,7 @@
 
       // ── Gen 0: Grandparents + grandparents' siblings ────────────────────
       {
-        id: 'paternal-granduncle', gen: 0, side: 'paternal', x: 200, y: 240,
+        id: 'paternal-granduncle', gen: 0, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "grandfather's brother",
           vi: { term: 'ông bác / ông chú', note: 'bác if older, chú if younger than ông nội' },
@@ -310,7 +310,7 @@
       },
       {
         id: 'paternal-grandfather',
-        gen: 0, side: 'paternal', x: 695, y: 240,
+        gen: 0, side: 'paternal', x: 0, y: 0,
         labels: {
           en: 'paternal grandfather',
           vi: { term: 'ông nội', note: 'nội = father\'s side' },
@@ -320,7 +320,7 @@
       },
       {
         id: 'paternal-grandmother',
-        gen: 0, side: 'paternal', x: 945, y: 240,
+        gen: 0, side: 'paternal', x: 0, y: 0,
         labels: {
           en: 'paternal grandmother',
           vi: { term: 'bà nội', note: 'nội = father\'s side' },
@@ -329,7 +329,7 @@
         }
       },
       {
-        id: 'paternal-grandaunt', gen: 0, side: 'paternal', x: 1195, y: 240,
+        id: 'paternal-grandaunt', gen: 0, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "grandfather's sister",
           vi: { term: 'bà cô', note: 'cô with bà prefix for generation' },
@@ -338,7 +338,7 @@
         }
       },
       {
-        id: 'maternal-granduncle', gen: 0, side: 'maternal', x: 2155, y: 240,
+        id: 'maternal-granduncle', gen: 0, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "grandmother's brother",
           vi: { term: 'ông cậu', note: 'cậu with ông prefix for generation' },
@@ -348,7 +348,7 @@
       },
       {
         id: 'maternal-grandfather',
-        gen: 0, side: 'maternal', x: 2655, y: 240,
+        gen: 0, side: 'maternal', x: 0, y: 0,
         labels: {
           en: 'maternal grandfather',
           vi: { term: 'ông ngoại', note: 'ngoại = mother\'s side' },
@@ -358,7 +358,7 @@
       },
       {
         id: 'maternal-grandmother',
-        gen: 0, side: 'maternal', x: 2905, y: 240,
+        gen: 0, side: 'maternal', x: 0, y: 0,
         labels: {
           en: 'maternal grandmother',
           vi: { term: 'bà ngoại', note: 'ngoại = mother\'s side' },
@@ -367,7 +367,7 @@
         }
       },
       {
-        id: 'maternal-grandaunt', gen: 0, side: 'maternal', x: 3155, y: 240,
+        id: 'maternal-grandaunt', gen: 0, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "grandmother's sister",
           vi: { term: 'bà dì', note: 'dì with bà prefix for generation' },
@@ -379,7 +379,7 @@
       // ── Gen 1: Parents + paternal/maternal aunts & uncles ────────────────
       {
         id: 'father',
-        gen: 1, side: 'paternal', x: 1640, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: 'father',
           vi: { term: 'ba', note: 'Southern/Central colloquial' },
@@ -389,7 +389,7 @@
       },
       {
         id: 'mother',
-        gen: 1, side: 'maternal', x: 1890, y: 480,
+        gen: 1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: 'mother',
           vi: { term: 'má', note: 'Southern/Central colloquial' },
@@ -399,7 +399,7 @@
       },
       {
         id: 'fathers-older-brother',
-        gen: 1, side: 'paternal', x: 390, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's older brother",
           vi: { term: 'bác', note: 'or bác trai to specify male; older than father' },
@@ -409,7 +409,7 @@
       },
       {
         id: 'fathers-older-brothers-wife',
-        gen: 1, side: 'paternal', x: 140, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's older brother's wife",
           vi: { term: 'bác gái', note: 'wife of bác; bác is base term for both spouses' },
@@ -419,7 +419,7 @@
       },
       {
         id: 'fathers-younger-brother',
-        gen: 1, side: 'paternal', x: 1140, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's younger brother",
           vi: { term: 'chú', note: 'younger than father; distinct from bác' },
@@ -429,7 +429,7 @@
       },
       {
         id: 'fathers-younger-brothers-wife',
-        gen: 1, side: 'paternal', x: 1390, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's younger brother's wife",
           vi: { term: 'thím', note: 'specific term for wife of chú' },
@@ -439,7 +439,7 @@
       },
       {
         id: 'fathers-sister',
-        gen: 1, side: 'paternal', x: 640, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's sister",
           vi: { term: 'cô', note: 'Southern: all paternal aunts regardless of age' },
@@ -449,7 +449,7 @@
       },
       {
         id: 'fathers-sisters-husband',
-        gen: 1, side: 'paternal', x: 890, y: 480,
+        gen: 1, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's sister's husband",
           vi: { term: 'dượng', note: 'Southern/Central: husband of cô' },
@@ -459,7 +459,7 @@
       },
       {
         id: 'mothers-brother',
-        gen: 1, side: 'maternal', x: 2140, y: 480,
+        gen: 1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's brother",
           vi: { term: 'cậu', note: 'Southern: all maternal uncles regardless of age' },
@@ -469,7 +469,7 @@
       },
       {
         id: 'mothers-brothers-wife',
-        gen: 1, side: 'maternal', x: 2390, y: 480,
+        gen: 1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's brother's wife",
           vi: { term: 'mợ', note: 'Southern: wife of cậu' },
@@ -479,7 +479,7 @@
       },
       {
         id: 'mothers-sister',
-        gen: 1, side: 'maternal', x: 2640, y: 480,
+        gen: 1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's sister",
           vi: { term: 'dì', note: 'Southern/Central: all maternal aunts regardless of age' },
@@ -489,7 +489,7 @@
       },
       {
         id: 'mothers-sisters-husband',
-        gen: 1, side: 'maternal', x: 2890, y: 480,
+        gen: 1, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's sister's husband",
           vi: { term: 'dượng', note: 'Southern/Central: husband of dì' },
@@ -501,7 +501,7 @@
       // ── Gen 2: Self + siblings + cousins ─────────────────────────────────
       {
         id: 'self',
-        gen: 2, side: 'self', x: 1640, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'me',
           vi: { term: 'tôi / mình', note: 'first person pronouns; kin address depends on relative' },
@@ -511,7 +511,7 @@
       },
       {
         id: 'spouse',
-        gen: 2, side: 'self', x: 1890, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'spouse',
           vi: { term: 'vợ / chồng', note: 'vợ = wife; chồng = husband' },
@@ -521,7 +521,7 @@
       },
       {
         id: 'older-brother',
-        gen: 2, side: 'self', x: 1020, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'older brother',
           vi: { term: 'anh', note: 'also used as pronoun for any slightly older male' },
@@ -531,7 +531,7 @@
       },
       {
         id: 'younger-brother',
-        gen: 2, side: 'self', x: 2140, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'younger brother',
           vi: { term: 'em trai', note: 'em = younger; trai specifies male' },
@@ -541,7 +541,7 @@
       },
       {
         id: 'older-sister',
-        gen: 2, side: 'self', x: 770, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'older sister',
           vi: { term: 'chị', note: 'also used as pronoun for any slightly older female' },
@@ -551,7 +551,7 @@
       },
       {
         id: 'younger-sister',
-        gen: 2, side: 'self', x: 2390, y: 720,
+        gen: 2, side: 'self', x: 0, y: 0,
         labels: {
           en: 'younger sister',
           vi: { term: 'em gái', note: 'em = younger; gái specifies female' },
@@ -561,7 +561,7 @@
       },
       {
         id: 'paternal-cousin-male',
-        gen: 2, side: 'paternal', x: 660, y: 720,
+        gen: 2, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "paternal uncle's son (堂)",
           vi: { term: 'anh/em họ (trai)', note: 'con bác or con chú; rank by parent seniority' },
@@ -571,7 +571,7 @@
       },
       {
         id: 'paternal-cousin-female',
-        gen: 2, side: 'paternal', x: 900, y: 720,
+        gen: 2, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "paternal uncle's daughter (堂)",
           vi: { term: 'chị/em họ (gái)', note: 'con bác or con chú; rank by parent seniority' },
@@ -581,7 +581,7 @@
       },
       {
         id: 'fathers-sisters-son',
-        gen: 2, side: 'paternal', x: 140, y: 720,
+        gen: 2, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's sister's son (表)",
           vi: { term: 'anh/em họ (trai)', note: 'con cô; same Vietnamese term as all cousins' },
@@ -591,7 +591,7 @@
       },
       {
         id: 'fathers-sisters-daughter',
-        gen: 2, side: 'paternal', x: 400, y: 720,
+        gen: 2, side: 'paternal', x: 0, y: 0,
         labels: {
           en: "father's sister's daughter (表)",
           vi: { term: 'chị/em họ (gái)', note: 'con cô; same Vietnamese term as all cousins' },
@@ -601,7 +601,7 @@
       },
       {
         id: 'maternal-cousin-male',
-        gen: 2, side: 'maternal', x: 2640, y: 720,
+        gen: 2, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's sibling's son (表)",
           vi: { term: 'anh/em họ (trai)', note: 'con cậu or con dì' },
@@ -611,7 +611,7 @@
       },
       {
         id: 'maternal-cousin-female',
-        gen: 2, side: 'maternal', x: 2890, y: 720,
+        gen: 2, side: 'maternal', x: 0, y: 0,
         labels: {
           en: "mother's sibling's daughter (表)",
           vi: { term: 'chị/em họ (gái)', note: 'con cậu or con dì' },
@@ -623,7 +623,7 @@
       // ── Gen 3: Children + nieces/nephews ─────────────────────────────────
       {
         id: 'son',
-        gen: 3, side: 'self', x: 1640, y: 940,
+        gen: 3, side: 'self', x: 0, y: 0,
         labels: {
           en: 'son',
           vi: { term: 'con trai', note: 'con = child; trai = male' },
@@ -633,7 +633,7 @@
       },
       {
         id: 'daughter',
-        gen: 3, side: 'self', x: 1890, y: 940,
+        gen: 3, side: 'self', x: 0, y: 0,
         labels: {
           en: 'daughter',
           vi: { term: 'con gái', note: 'con = child; gái = female' },
@@ -643,7 +643,7 @@
       },
       {
         id: 'brothers-child',
-        gen: 3, side: 'self', x: 1020, y: 940,
+        gen: 3, side: 'self', x: 0, y: 0,
         labels: {
           en: "brother's child",
           vi: { term: 'cháu trai / cháu gái', note: 'trai = nephew; gái = niece. No brother\'s vs sister\'s distinction' },
@@ -653,7 +653,7 @@
       },
       {
         id: 'sisters-child',
-        gen: 3, side: 'self', x: 770, y: 940,
+        gen: 3, side: 'self', x: 0, y: 0,
         labels: {
           en: "sister's child",
           vi: { term: 'cháu trai / cháu gái', note: 'trai = nephew; gái = niece. Same term as brother\'s child' },
@@ -665,7 +665,7 @@
       // ── Gen 4: Grandchildren ─────────────────────────────────────────────
       {
         id: 'sons-child',
-        gen: 4, side: 'self', x: 1640, y: 1120,
+        gen: 4, side: 'self', x: 0, y: 0,
         labels: {
           en: "son's child (grandchild)",
           vi: { term: 'cháu nội', note: 'from grandparent\'s perspective; nội = inner/paternal line' },
@@ -675,24 +675,123 @@
       },
       {
         id: 'daughters-child',
-        gen: 4, side: 'self', x: 1890, y: 1120,
+        gen: 4, side: 'self', x: 0, y: 0,
         labels: {
           en: "daughter's child (grandchild)",
           vi: { term: 'cháu ngoại', note: 'from grandparent\'s perspective; ngoại = outer/maternal line' },
           vi_alt: null,
           zh: { characters: '外孙 / 外孙女', pinyin: 'wàisūn / wàisūnnǚ', note: '外 = outer; daughter\'s children' }
         }
-      }
+      },
+
+      // ── In-laws (Gen 1) ──────────────────────────────────────────────────
+      { id: 'father-in-law', gen: 1, side: 'self', x: 0, y: 0, labels: { en: "spouse's father", vi: { term: 'bố chồng / bố vợ', note: 'bố chồng = husband\'s father; bố vợ = wife\'s father' }, vi_alt: null, zh: { characters: '公公 / 岳父', pinyin: 'gōnggong / yuèfù', note: '公公 = husband\'s father; 岳父 = wife\'s father' } } },
+      { id: 'mother-in-law', gen: 1, side: 'self', x: 0, y: 0, labels: { en: "spouse's mother", vi: { term: 'mẹ chồng / mẹ vợ', note: 'mẹ chồng = husband\'s mother; mẹ vợ = wife\'s mother' }, vi_alt: null, zh: { characters: '婆婆 / 岳母', pinyin: 'pópó / yuèmǔ', note: '婆婆 = husband\'s mother; 岳母 = wife\'s mother' } } },
+
+      // ── Siblings' spouses (Gen 2) ────────────────────────────────────────
+      { id: 'older-brothers-wife', gen: 2, side: 'self', x: 0, y: 0, labels: { en: "older brother's wife", vi: { term: 'chị dâu', note: 'dâu = daughter-in-law / bride' }, vi_alt: null, zh: { characters: '嫂子', pinyin: 'sǎozi', note: null } } },
+      { id: 'older-sisters-husband', gen: 2, side: 'self', x: 0, y: 0, labels: { en: "older sister's husband", vi: { term: 'anh rể', note: 'rể = son-in-law / groom' }, vi_alt: null, zh: { characters: '姐夫', pinyin: 'jiěfu', note: null } } },
+      { id: 'younger-brothers-wife', gen: 2, side: 'self', x: 0, y: 0, labels: { en: "younger brother's wife", vi: { term: 'em dâu', note: null }, vi_alt: null, zh: { characters: '弟妹', pinyin: 'dìmèi', note: null } } },
+      { id: 'younger-sisters-husband', gen: 2, side: 'self', x: 0, y: 0, labels: { en: "younger sister's husband", vi: { term: 'em rể', note: null }, vi_alt: null, zh: { characters: '妹夫', pinyin: 'mèifu', note: null } } },
+
+      // ── Children's spouses (Gen 3) ───────────────────────────────────────
+      { id: 'sons-wife', gen: 3, side: 'self', x: 0, y: 0, labels: { en: "son's wife", vi: { term: 'con dâu', note: 'dâu = daughter-in-law' }, vi_alt: null, zh: { characters: '儿媳', pinyin: 'érxí', note: 'formal: 儿媳妇 érxífù' } } },
+      { id: 'daughters-husband', gen: 3, side: 'self', x: 0, y: 0, labels: { en: "daughter's husband", vi: { term: 'con rể', note: 'rể = son-in-law' }, vi_alt: null, zh: { characters: '女婿', pinyin: 'nǚxù', note: null } } }
     ];
 
-    const SVG_W = 3400;
-    const SVG_H = 1200;
+    let svgWidth = 3400;
+    let svgHeight = 1400;
     const NODE_W = 230;
     const NODE_H_BASE = 85;
     const NODE_RX = 8;
     const NS = 'http://www.w3.org/2000/svg';
     const NODE_MAP = {};
     KINSHIP.forEach(n => { NODE_MAP[n.id] = n; });
+
+    const GEN_Y_MAP = { '-1': 0, '0': 220, '1': 480, '2': 740, '3': 1000, '4': 1220 };
+    const NODE_GAP = 250;
+    const CLUSTER_GAP = 400;
+
+    // Explicit left-to-right order per tier. null = cluster gap.
+    const TIER_ORDER = [
+      [
+        'paternal-great-grandfather', 'paternal-great-grandmother',
+        null,
+        'maternal-great-grandfather', 'maternal-great-grandmother'
+      ],
+      [
+        'paternal-granduncle', 'paternal-grandfather', 'paternal-grandmother', 'paternal-grandaunt',
+        null,
+        'maternal-granduncle', 'maternal-grandfather', 'maternal-grandmother', 'maternal-grandaunt'
+      ],
+      [
+        'fathers-older-brothers-wife', 'fathers-older-brother', 'fathers-sister', 'fathers-sisters-husband',
+        'fathers-younger-brother', 'fathers-younger-brothers-wife',
+        null,
+        'father', 'mother', 'father-in-law', 'mother-in-law',
+        null,
+        'mothers-brother', 'mothers-brothers-wife', 'mothers-sister', 'mothers-sisters-husband'
+      ],
+      [
+        'fathers-sisters-son', 'fathers-sisters-daughter', 'paternal-cousin-male', 'paternal-cousin-female',
+        null,
+        'older-sisters-husband', 'older-sister', 'older-brothers-wife', 'older-brother',
+        'self', 'spouse',
+        'younger-brother', 'younger-brothers-wife', 'younger-sister', 'younger-sisters-husband',
+        null,
+        'maternal-cousin-male', 'maternal-cousin-female'
+      ],
+      [
+        'sisters-child', 'brothers-child',
+        null,
+        'sons-wife', 'son', 'daughter', 'daughters-husband'
+      ],
+      [
+        'sons-child', 'daughters-child'
+      ]
+    ];
+
+    function computeLayout() {
+      const genKeys = ['-1', '0', '1', '2', '3', '4'];
+      const tierWidths = [];
+
+      // First pass: compute width of each tier
+      TIER_ORDER.forEach((order, i) => {
+        let width = 0;
+        order.forEach((id, j) => {
+          if (j > 0) width += (id === null || order[j - 1] === null) ? CLUSTER_GAP : NODE_GAP;
+        });
+        tierWidths.push(width);
+      });
+
+      const maxWidth = Math.max(...tierWidths);
+
+      // Second pass: assign positions
+      TIER_ORDER.forEach((order, i) => {
+        const gen = genKeys[i];
+        const y = GEN_Y_MAP[gen];
+        const tierWidth = tierWidths[i];
+        const offset = (maxWidth - tierWidth) / 2 + NODE_W / 2 + 20;
+
+        let x = offset;
+        order.forEach((id, j) => {
+          if (id === null) return;
+          if (j > 0) {
+            x += (id === null || order[j - 1] === null) ? CLUSTER_GAP : NODE_GAP;
+          }
+          const node = NODE_MAP[id];
+          if (node) {
+            node.x = x;
+            node.y = y;
+          }
+        });
+      });
+
+      svgWidth = maxWidth + NODE_W + 40;
+      svgHeight = GEN_Y_MAP['4'] + NODE_H_BASE + 80;
+    }
+
+    computeLayout();
 
     function getSideColor(side) {
       if (side === 'paternal') return 'var(--paternal)';
@@ -799,6 +898,13 @@
         { from: 'mothers-brother', to: 'mothers-brothers-wife', type: 'spouse' },
         { from: 'mothers-sister', to: 'mothers-sisters-husband', type: 'spouse' },
         { from: 'self', to: 'spouse', type: 'spouse' },
+        { from: 'father-in-law', to: 'mother-in-law', type: 'spouse' },
+        { from: 'older-brother', to: 'older-brothers-wife', type: 'spouse' },
+        { from: 'older-sister', to: 'older-sisters-husband', type: 'spouse' },
+        { from: 'younger-brother', to: 'younger-brothers-wife', type: 'spouse' },
+        { from: 'younger-sister', to: 'younger-sisters-husband', type: 'spouse' },
+        { from: 'son', to: 'sons-wife', type: 'spouse' },
+        { from: 'daughter', to: 'daughters-husband', type: 'spouse' },
 
         // Parents → self generation
         { from: 'father', to: 'older-brother', type: 'child' },
@@ -812,6 +918,8 @@
         { from: 'fathers-sister', to: 'fathers-sisters-daughter', type: 'child' },
         { from: 'mothers-brother', to: 'maternal-cousin-male', type: 'child' },
         { from: 'mothers-brother', to: 'maternal-cousin-female', type: 'child' },
+        { from: 'mothers-sister', to: 'maternal-cousin-male', type: 'child' },
+        { from: 'mothers-sister', to: 'maternal-cousin-female', type: 'child' },
 
         // Self → children
         { from: 'self', to: 'son', type: 'child' },
@@ -857,9 +965,9 @@
       const svg = document.getElementById('treeSvg');
       while (svg.firstChild) svg.removeChild(svg.firstChild);
 
-      svg.setAttribute('viewBox', `0 0 ${SVG_W} ${SVG_H}`);
-      svg.setAttribute('width', SVG_W);
-      svg.setAttribute('height', SVG_H);
+      svg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+      svg.setAttribute('width', svgWidth);
+      svg.setAttribute('height', svgHeight);
 
       const linksGroup = document.createElementNS(NS, 'g');
       linksGroup.setAttribute('class', 'links');
