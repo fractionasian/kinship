@@ -725,15 +725,16 @@
         'maternal-granduncle', 'maternal-grandfather', 'maternal-grandmother', 'maternal-grandaunt'
       ],
       [
-        'fathers-older-brothers-wife', 'fathers-older-brother', 'fathers-sister', 'fathers-sisters-husband',
+        'fathers-older-brothers-wife', 'fathers-older-brother',
         'fathers-younger-brother', 'fathers-younger-brothers-wife',
+        'fathers-sister', 'fathers-sisters-husband',
         null,
         'father', 'mother', 'father-in-law', 'mother-in-law',
         null,
         'mothers-brother', 'mothers-brothers-wife', 'mothers-sister', 'mothers-sisters-husband'
       ],
       [
-        'fathers-sisters-son', 'fathers-sisters-daughter', 'paternal-cousin-male', 'paternal-cousin-female',
+        'paternal-cousin-male', 'paternal-cousin-female', 'fathers-sisters-son', 'fathers-sisters-daughter',
         null,
         'older-sisters-husband', 'older-sister', 'older-brothers-wife', 'older-brother',
         'self', 'spouse',
@@ -932,6 +933,27 @@
         { from: 'daughter', to: 'daughters-child', type: 'child' }
     ];
 
+    // Map parent nodes to their spouse for midpoint child connections
+    const SPOUSE_MAP = {
+      'paternal-great-grandfather': 'paternal-great-grandmother',
+      'maternal-great-grandfather': 'maternal-great-grandmother',
+      'paternal-grandfather': 'paternal-grandmother',
+      'maternal-grandfather': 'maternal-grandmother',
+      'father': 'mother',
+      'fathers-older-brother': 'fathers-older-brothers-wife',
+      'fathers-sister': 'fathers-sisters-husband',
+      'fathers-younger-brother': 'fathers-younger-brothers-wife',
+      'mothers-brother': 'mothers-brothers-wife',
+      'mothers-sister': 'mothers-sisters-husband',
+      'self': 'spouse',
+      'older-brother': 'older-brothers-wife',
+      'older-sister': 'older-sisters-husband',
+      'younger-brother': 'younger-brothers-wife',
+      'younger-sister': 'younger-sisters-husband',
+      'son': 'sons-wife',
+      'daughter': 'daughters-husband',
+    };
+
     function renderLinks(parentGroup) {
       CONNECTIONS.forEach(conn => {
         const fromNode = NODE_MAP[conn.from];
@@ -939,8 +961,13 @@
         if (!fromNode || !toNode) return;
 
         if (conn.type === 'child') {
+          // Originate from midpoint between parent and spouse
+          const spouseId = SPOUSE_MAP[conn.from];
+          const spouseNode = spouseId ? NODE_MAP[spouseId] : null;
+          const originX = spouseNode ? (fromNode.x + spouseNode.x) / 2 : fromNode.x;
+
           const line = document.createElementNS(NS, 'line');
-          line.setAttribute('x1', fromNode.x);
+          line.setAttribute('x1', originX);
           line.setAttribute('y1', fromNode.y + NODE_H_BASE);
           line.setAttribute('x2', toNode.x);
           line.setAttribute('y2', toNode.y);
