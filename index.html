@@ -990,7 +990,7 @@
         const spouseId = SPOUSE_MAP[parentId];
         const spouseNode = spouseId ? NODE_MAP[spouseId] : null;
         const originX = spouseNode ? (parentNode.x + spouseNode.x) / 2 : parentNode.x;
-        const originY = parentNode.y + NODE_H_BASE / 2; // spouse line level
+        const originY = parentNode.y + NODE_H_BASE; // node bottom, below the filled rectangle
 
         // Bus bar Y: midpoint between parent bottom and children top
         const childY = children[0].y;
