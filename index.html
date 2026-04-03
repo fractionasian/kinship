@@ -955,35 +955,113 @@
     };
 
     function renderLinks(parentGroup) {
-      CONNECTIONS.forEach(conn => {
+      // Draw spouse links (unchanged)
+      CONNECTIONS.filter(c => c.type === 'spouse').forEach(conn => {
         const fromNode = NODE_MAP[conn.from];
         const toNode = NODE_MAP[conn.to];
         if (!fromNode || !toNode) return;
+        const line = document.createElementNS(NS, 'line');
+        line.setAttribute('x1', fromNode.x);
+        line.setAttribute('y1', fromNode.y + NODE_H_BASE / 2);
+        line.setAttribute('x2', toNode.x);
+        line.setAttribute('y2', toNode.y + NODE_H_BASE / 2);
+        line.setAttribute('stroke', 'var(--spouse-link)');
+        line.setAttribute('stroke-width', 1);
+        line.setAttribute('stroke-dasharray', '4 3');
+        parentGroup.appendChild(line);
+      });
 
-        if (conn.type === 'child') {
-          // Originate from midpoint between parent and spouse
-          const spouseId = SPOUSE_MAP[conn.from];
-          const spouseNode = spouseId ? NODE_MAP[spouseId] : null;
-          const originX = spouseNode ? (fromNode.x + spouseNode.x) / 2 : fromNode.x;
+      // Group child connections by parent
+      const childGroups = {};
+      CONNECTIONS.filter(c => c.type === 'child').forEach(conn => {
+        if (!childGroups[conn.from]) childGroups[conn.from] = [];
+        childGroups[conn.from].push(conn.to);
+      });
 
-          const line = document.createElementNS(NS, 'line');
-          line.setAttribute('x1', originX);
-          line.setAttribute('y1', fromNode.y + NODE_H_BASE);
-          line.setAttribute('x2', toNode.x);
-          line.setAttribute('y2', toNode.y);
-          line.setAttribute('stroke', 'var(--link-color)');
-          line.setAttribute('stroke-width', 1);
-          parentGroup.appendChild(line);
+      // Draw bus bar connectors for each parent group
+      const R = 10; // corner radius for rounded paths
+      Object.keys(childGroups).forEach(parentId => {
+        const parentNode = NODE_MAP[parentId];
+        if (!parentNode) return;
+
+        const childIds = childGroups[parentId];
+        const children = childIds.map(id => NODE_MAP[id]).filter(Boolean);
+        if (children.length === 0) return;
+
+        // Origin: midpoint between parent and spouse
+        const spouseId = SPOUSE_MAP[parentId];
+        const spouseNode = spouseId ? NODE_MAP[spouseId] : null;
+        const originX = spouseNode ? (parentNode.x + spouseNode.x) / 2 : parentNode.x;
+        const originY = parentNode.y + NODE_H_BASE;
+
+        // Bus bar Y: midpoint between parent bottom and children top
+        const childY = children[0].y;
+        const busY = originY + (childY - originY) / 2;
+
+        // Sort children by x position
+        children.sort((a, b) => a.x - b.x);
+
+        if (children.length === 1) {
+          // Single child: just a vertical line (or step if offset)
+          const child = children[0];
+          if (Math.abs(originX - child.x) < 2) {
+            // Straight vertical
+            const line = document.createElementNS(NS, 'line');
+            line.setAttribute('x1', originX);
+            line.setAttribute('y1', originY);
+            line.setAttribute('x2', child.x);
+            line.setAttribute('y2', childY);
+            line.setAttribute('stroke', 'var(--link-color)');
+            line.setAttribute('stroke-width', 1);
+            parentGroup.appendChild(line);
+          } else {
+            // Step connector with rounded corners
+            const path = document.createElementNS(NS, 'path');
+            const dx = child.x > originX ? R : -R;
+            const d = `M ${originX} ${originY} V ${busY - R} Q ${originX} ${busY} ${originX + dx} ${busY} H ${child.x - dx} Q ${child.x} ${busY} ${child.x} ${busY + R} V ${childY}`;
+            path.setAttribute('d', d);
+            path.setAttribute('stroke', 'var(--link-color)');
+            path.setAttribute('stroke-width', 1);
+            path.setAttribute('fill', 'none');
+            parentGroup.appendChild(path);
+          }
         } else {
-          const line = document.createElementNS(NS, 'line');
-          line.setAttribute('x1', fromNode.x);
-          line.setAttribute('y1', fromNode.y + NODE_H_BASE / 2);
-          line.setAttribute('x2', toNode.x);
-          line.setAttribute('y2', toNode.y + NODE_H_BASE / 2);
-          line.setAttribute('stroke', 'var(--spouse-link)');
-          line.setAttribute('stroke-width', 1);
-          line.setAttribute('stroke-dasharray', '4 3');
-          parentGroup.appendChild(line);
+          // Multiple children: bus bar pattern
+
+          const leftX = children[0].x;
+          const rightX = children[children.length - 1].x;
+
+          // 1. Vertical stem from origin down to bus bar
+          const stem = document.createElementNS(NS, 'line');
+          stem.setAttribute('x1', originX);
+          stem.setAttribute('y1', originY);
+          stem.setAttribute('x2', originX);
+          stem.setAttribute('y2', busY);
+          stem.setAttribute('stroke', 'var(--link-color)');
+          stem.setAttribute('stroke-width', 1);
+          parentGroup.appendChild(stem);
+
+          // 2. Horizontal bus bar
+          const bar = document.createElementNS(NS, 'line');
+          bar.setAttribute('x1', leftX);
+          bar.setAttribute('y1', busY);
+          bar.setAttribute('x2', rightX);
+          bar.setAttribute('y2', busY);
+          bar.setAttribute('stroke', 'var(--link-color)');
+          bar.setAttribute('stroke-width', 1);
+          parentGroup.appendChild(bar);
+
+          // 3. Vertical drops from bus bar to each child
+          children.forEach(child => {
+            const drop = document.createElementNS(NS, 'line');
+            drop.setAttribute('x1', child.x);
+            drop.setAttribute('y1', busY);
+            drop.setAttribute('x2', child.x);
+            drop.setAttribute('y2', childY);
+            drop.setAttribute('stroke', 'var(--link-color)');
+            drop.setAttribute('stroke-width', 1);
+            parentGroup.appendChild(drop);
+          });
         }
       });
     }
