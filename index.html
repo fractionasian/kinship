@@ -151,7 +151,10 @@
       gap: 0.25rem;
     }
 
-    /* Task 4: Node and tree styles */
+    #treeSvg { display: block; }
+    .node rect { transition: stroke-width 0.15s; }
+    .node:hover rect { stroke-width: 2.5; }
+    .node text { pointer-events: none; user-select: none; }
   </style>
 </head>
 <body>
@@ -235,7 +238,7 @@
       // ── Gen 0: Grandparents ──────────────────────────────────────────────
       {
         id: 'paternal-grandfather',
-        gen: 0, side: 'paternal', x: 0, y: 0,
+        gen: 0, side: 'paternal', x: 440, y: 40,
         labels: {
           en: 'Paternal grandfather',
           vi: { term: 'ông nội', note: 'nội = father\'s side' },
@@ -245,7 +248,7 @@
       },
       {
         id: 'paternal-grandmother',
-        gen: 0, side: 'paternal', x: 0, y: 0,
+        gen: 0, side: 'paternal', x: 620, y: 40,
         labels: {
           en: 'Paternal grandmother',
           vi: { term: 'bà nội', note: 'nội = father\'s side' },
@@ -255,7 +258,7 @@
       },
       {
         id: 'maternal-grandfather',
-        gen: 0, side: 'maternal', x: 0, y: 0,
+        gen: 0, side: 'maternal', x: 1880, y: 40,
         labels: {
           en: 'Maternal grandfather',
           vi: { term: 'ông ngoại', note: 'ngoại = mother\'s side' },
@@ -265,7 +268,7 @@
       },
       {
         id: 'maternal-grandmother',
-        gen: 0, side: 'maternal', x: 0, y: 0,
+        gen: 0, side: 'maternal', x: 2060, y: 40,
         labels: {
           en: 'Maternal grandmother',
           vi: { term: 'bà ngoại', note: 'ngoại = mother\'s side' },
@@ -277,7 +280,7 @@
       // ── Gen 1: Parents + paternal/maternal aunts & uncles ────────────────
       {
         id: 'father',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 1200, y: 200,
         labels: {
           en: 'Father',
           vi: { term: 'ba', note: 'Southern/Central colloquial' },
@@ -287,7 +290,7 @@
       },
       {
         id: 'mother',
-        gen: 1, side: 'maternal', x: 0, y: 0,
+        gen: 1, side: 'maternal', x: 1400, y: 200,
         labels: {
           en: 'Mother',
           vi: { term: 'má', note: 'Southern/Central colloquial' },
@@ -297,7 +300,7 @@
       },
       {
         id: 'fathers-older-brother',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 280, y: 200,
         labels: {
           en: "Father's older brother",
           vi: { term: 'bác', note: 'or bác trai to specify male; older than father' },
@@ -307,7 +310,7 @@
       },
       {
         id: 'fathers-older-brothers-wife',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 100, y: 200,
         labels: {
           en: "Father's older brother's wife",
           vi: { term: 'bác gái', note: 'wife of bác; bác is base term for both spouses' },
@@ -317,7 +320,7 @@
       },
       {
         id: 'fathers-younger-brother',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 820, y: 200,
         labels: {
           en: "Father's younger brother",
           vi: { term: 'chú', note: 'younger than father; distinct from bác' },
@@ -327,7 +330,7 @@
       },
       {
         id: 'fathers-younger-brothers-wife',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 1000, y: 200,
         labels: {
           en: "Father's younger brother's wife",
           vi: { term: 'thím', note: 'specific term for wife of chú' },
@@ -337,7 +340,7 @@
       },
       {
         id: 'fathers-sister',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 460, y: 200,
         labels: {
           en: "Father's sister",
           vi: { term: 'cô', note: 'Southern: all paternal aunts regardless of age' },
@@ -347,7 +350,7 @@
       },
       {
         id: 'fathers-sisters-husband',
-        gen: 1, side: 'paternal', x: 0, y: 0,
+        gen: 1, side: 'paternal', x: 640, y: 200,
         labels: {
           en: "Father's sister's husband",
           vi: { term: 'dượng', note: 'Southern/Central: husband of cô' },
@@ -357,7 +360,7 @@
       },
       {
         id: 'mothers-brother',
-        gen: 1, side: 'maternal', x: 0, y: 0,
+        gen: 1, side: 'maternal', x: 1580, y: 200,
         labels: {
           en: "Mother's brother",
           vi: { term: 'cậu', note: 'Southern: all maternal uncles regardless of age' },
@@ -367,7 +370,7 @@
       },
       {
         id: 'mothers-brothers-wife',
-        gen: 1, side: 'maternal', x: 0, y: 0,
+        gen: 1, side: 'maternal', x: 1760, y: 200,
         labels: {
           en: "Mother's brother's wife",
           vi: { term: 'mợ', note: 'Southern: wife of cậu' },
@@ -377,7 +380,7 @@
       },
       {
         id: 'mothers-sister',
-        gen: 1, side: 'maternal', x: 0, y: 0,
+        gen: 1, side: 'maternal', x: 1940, y: 200,
         labels: {
           en: "Mother's sister",
           vi: { term: 'dì', note: 'Southern/Central: all maternal aunts regardless of age' },
@@ -387,7 +390,7 @@
       },
       {
         id: 'mothers-sisters-husband',
-        gen: 1, side: 'maternal', x: 0, y: 0,
+        gen: 1, side: 'maternal', x: 2120, y: 200,
         labels: {
           en: "Mother's sister's husband",
           vi: { term: 'dượng', note: 'Southern/Central: husband of dì' },
@@ -399,7 +402,7 @@
       // ── Gen 2: Self + siblings + cousins ─────────────────────────────────
       {
         id: 'self',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 1200, y: 400,
         labels: {
           en: 'Self',
           vi: { term: 'tôi / mình', note: 'first person pronouns; kin address depends on relative' },
@@ -409,7 +412,7 @@
       },
       {
         id: 'spouse',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 1400, y: 400,
         labels: {
           en: 'Spouse',
           vi: { term: 'vợ / chồng', note: 'vợ = wife; chồng = husband' },
@@ -419,7 +422,7 @@
       },
       {
         id: 'older-brother',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 740, y: 400,
         labels: {
           en: 'Older brother',
           vi: { term: 'anh', note: 'also used as pronoun for any slightly older male' },
@@ -429,7 +432,7 @@
       },
       {
         id: 'younger-brother',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 1580, y: 400,
         labels: {
           en: 'Younger brother',
           vi: { term: 'em trai', note: 'em = younger; trai specifies male' },
@@ -439,7 +442,7 @@
       },
       {
         id: 'older-sister',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 560, y: 400,
         labels: {
           en: 'Older sister',
           vi: { term: 'chị', note: 'also used as pronoun for any slightly older female' },
@@ -449,7 +452,7 @@
       },
       {
         id: 'younger-sister',
-        gen: 2, side: 'self', x: 0, y: 0,
+        gen: 2, side: 'self', x: 1760, y: 400,
         labels: {
           en: 'Younger sister',
           vi: { term: 'em gái', note: 'em = younger; gái specifies female' },
@@ -459,7 +462,7 @@
       },
       {
         id: 'paternal-cousin',
-        gen: 2, side: 'paternal', x: 0, y: 0,
+        gen: 2, side: 'paternal', x: 200, y: 400,
         labels: {
           en: "Paternal cousin (father's brother's child)",
           vi: { term: 'anh/chị/em họ', note: 'con bác or con chú; họ = clan marker' },
@@ -469,7 +472,7 @@
       },
       {
         id: 'maternal-cousin',
-        gen: 2, side: 'maternal', x: 0, y: 0,
+        gen: 2, side: 'maternal', x: 2060, y: 400,
         labels: {
           en: "Maternal cousin (mother's sibling's child or father's sister's child)",
           vi: { term: 'anh/chị/em họ', note: 'con cô, con cậu, or con dì; họ = clan marker' },
@@ -481,7 +484,7 @@
       // ── Gen 3: Children + nieces/nephews ─────────────────────────────────
       {
         id: 'son',
-        gen: 3, side: 'self', x: 0, y: 0,
+        gen: 3, side: 'self', x: 1120, y: 600,
         labels: {
           en: 'Son',
           vi: { term: 'con trai', note: 'con = child; trai = male' },
@@ -491,7 +494,7 @@
       },
       {
         id: 'daughter',
-        gen: 3, side: 'self', x: 0, y: 0,
+        gen: 3, side: 'self', x: 1480, y: 600,
         labels: {
           en: 'Daughter',
           vi: { term: 'con gái', note: 'con = child; gái = female' },
@@ -501,7 +504,7 @@
       },
       {
         id: 'brothers-child',
-        gen: 3, side: 'self', x: 0, y: 0,
+        gen: 3, side: 'self', x: 740, y: 600,
         labels: {
           en: "Brother's child (nephew/niece)",
           vi: { term: 'cháu trai / cháu gái', note: 'Vietnamese does not distinguish brother\'s vs sister\'s child' },
@@ -511,7 +514,7 @@
       },
       {
         id: 'sisters-child',
-        gen: 3, side: 'self', x: 0, y: 0,
+        gen: 3, side: 'self', x: 560, y: 600,
         labels: {
           en: "Sister's child (nephew/niece)",
           vi: { term: 'cháu trai / cháu gái', note: 'same term as brother\'s child; cháu covers all nephews/nieces' },
@@ -523,7 +526,7 @@
       // ── Gen 4: Grandchildren ─────────────────────────────────────────────
       {
         id: 'sons-child',
-        gen: 4, side: 'self', x: 0, y: 0,
+        gen: 4, side: 'self', x: 1120, y: 780,
         labels: {
           en: "Son's child (paternal grandchild)",
           vi: { term: 'cháu nội', note: 'from grandparent\'s perspective; nội = inner/paternal line' },
@@ -533,7 +536,7 @@
       },
       {
         id: 'daughters-child',
-        gen: 4, side: 'self', x: 0, y: 0,
+        gen: 4, side: 'self', x: 1480, y: 780,
         labels: {
           en: "Daughter's child (maternal grandchild)",
           vi: { term: 'cháu ngoại', note: 'from grandparent\'s perspective; ngoại = outer/maternal line' },
@@ -543,7 +546,173 @@
       }
     ];
 
-    // Task 4: SVG rendering
+    // ── Task 4: SVG rendering ──────────────────────────────────────────────
+
+    const SVG_W = 2400;
+    const SVG_H = 900;
+    const NODE_W = 160;
+    const NODE_H_BASE = 70;
+    const NODE_RX = 8;
+    const GEN_Y = [40, 200, 400, 600, 780];
+
+    function getSideColor(side) {
+      if (side === 'paternal') return 'var(--paternal)';
+      if (side === 'maternal') return 'var(--maternal)';
+      if (side === 'self') return 'var(--self-accent)';
+      return 'var(--tx-3)';
+    }
+
+    function buildLabelLines(labels, lang) {
+      const lines = [];
+
+      if (lang === 'vi' || lang === 'both') {
+        let viText = labels.vi.term;
+        if (labels.vi_alt) {
+          viText += ' (S) / ' + labels.vi_alt.term + ' (N)';
+        }
+        lines.push({ text: viText, color: 'var(--tx)', size: '13px', weight: 600 });
+      }
+
+      if (lang === 'zh' || lang === 'both') {
+        lines.push({ text: labels.zh.characters, color: 'var(--tx)', size: '15px', weight: 600 });
+        lines.push({ text: labels.zh.pinyin, color: 'var(--tx-2)', size: '11px', weight: null });
+      }
+
+      lines.push({ text: labels.en, color: 'var(--tx-2)', size: '10px', weight: null });
+
+      return lines;
+    }
+
+    function renderNode(parentGroup, node, lang) {
+      const NS = 'http://www.w3.org/2000/svg';
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'node');
+
+      const lines = buildLabelLines(node.labels, lang);
+      const nodeH = Math.max(NODE_H_BASE, lines.length * 16 + 24);
+
+      const rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('x', node.x - NODE_W / 2);
+      rect.setAttribute('y', node.y);
+      rect.setAttribute('width', NODE_W);
+      rect.setAttribute('height', nodeH);
+      rect.setAttribute('rx', NODE_RX);
+      rect.setAttribute('fill', 'var(--node-bg)');
+      rect.setAttribute('stroke', getSideColor(node.side));
+      rect.setAttribute('stroke-width', node.id === 'self' ? 2.5 : 1.5);
+      g.appendChild(rect);
+
+      lines.forEach((line, i) => {
+        const text = document.createElementNS(NS, 'text');
+        text.setAttribute('x', node.x);
+        text.setAttribute('y', node.y + 12 + (i + 1) * 16);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('fill', line.color);
+        text.setAttribute('font-size', line.size);
+        if (line.weight) text.setAttribute('font-weight', line.weight);
+        text.textContent = line.text;
+        g.appendChild(text);
+      });
+
+      parentGroup.appendChild(g);
+    }
+
+    function renderLinks(parentGroup) {
+      const NS = 'http://www.w3.org/2000/svg';
+      const nodeMap = {};
+      KINSHIP.forEach(n => { nodeMap[n.id] = n; });
+
+      const connections = [
+        // Grandparents → children
+        { from: 'paternal-grandfather', to: 'father', type: 'child' },
+        { from: 'paternal-grandfather', to: 'fathers-older-brother', type: 'child' },
+        { from: 'paternal-grandfather', to: 'fathers-younger-brother', type: 'child' },
+        { from: 'paternal-grandfather', to: 'fathers-sister', type: 'child' },
+        { from: 'maternal-grandfather', to: 'mother', type: 'child' },
+        { from: 'maternal-grandfather', to: 'mothers-brother', type: 'child' },
+        { from: 'maternal-grandfather', to: 'mothers-sister', type: 'child' },
+
+        // Spouse links
+        { from: 'paternal-grandfather', to: 'paternal-grandmother', type: 'spouse' },
+        { from: 'maternal-grandfather', to: 'maternal-grandmother', type: 'spouse' },
+        { from: 'father', to: 'mother', type: 'spouse' },
+        { from: 'fathers-older-brother', to: 'fathers-older-brothers-wife', type: 'spouse' },
+        { from: 'fathers-younger-brother', to: 'fathers-younger-brothers-wife', type: 'spouse' },
+        { from: 'fathers-sister', to: 'fathers-sisters-husband', type: 'spouse' },
+        { from: 'mothers-brother', to: 'mothers-brothers-wife', type: 'spouse' },
+        { from: 'mothers-sister', to: 'mothers-sisters-husband', type: 'spouse' },
+        { from: 'self', to: 'spouse', type: 'spouse' },
+
+        // Parents → self generation
+        { from: 'father', to: 'older-brother', type: 'child' },
+        { from: 'father', to: 'self', type: 'child' },
+        { from: 'father', to: 'younger-brother', type: 'child' },
+        { from: 'father', to: 'older-sister', type: 'child' },
+        { from: 'father', to: 'younger-sister', type: 'child' },
+        { from: 'fathers-older-brother', to: 'paternal-cousin', type: 'child' },
+        { from: 'mothers-brother', to: 'maternal-cousin', type: 'child' },
+
+        // Self → children
+        { from: 'self', to: 'son', type: 'child' },
+        { from: 'self', to: 'daughter', type: 'child' },
+        { from: 'older-brother', to: 'brothers-child', type: 'child' },
+        { from: 'older-sister', to: 'sisters-child', type: 'child' },
+
+        // Children → grandchildren
+        { from: 'son', to: 'sons-child', type: 'child' },
+        { from: 'daughter', to: 'daughters-child', type: 'child' }
+      ];
+
+      connections.forEach(conn => {
+        const fromNode = nodeMap[conn.from];
+        const toNode = nodeMap[conn.to];
+        if (!fromNode || !toNode) return;
+
+        const line = document.createElementNS(NS, 'line');
+
+        if (conn.type === 'child') {
+          line.setAttribute('x1', fromNode.x);
+          line.setAttribute('y1', fromNode.y + NODE_H_BASE);
+          line.setAttribute('x2', toNode.x);
+          line.setAttribute('y2', toNode.y);
+          line.setAttribute('stroke', 'var(--link-color)');
+          line.setAttribute('stroke-width', 1);
+        } else {
+          line.setAttribute('x1', fromNode.x);
+          line.setAttribute('y1', fromNode.y + NODE_H_BASE / 2);
+          line.setAttribute('x2', toNode.x);
+          line.setAttribute('y2', toNode.y + NODE_H_BASE / 2);
+          line.setAttribute('stroke', 'var(--spouse-link)');
+          line.setAttribute('stroke-width', 1);
+          line.setAttribute('stroke-dasharray', '4 3');
+        }
+
+        parentGroup.appendChild(line);
+      });
+    }
+
+    function renderTree(lang) {
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.getElementById('treeSvg');
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      svg.setAttribute('viewBox', `0 0 ${SVG_W} ${SVG_H}`);
+      svg.setAttribute('width', SVG_W);
+      svg.setAttribute('height', SVG_H);
+
+      const linksGroup = document.createElementNS(NS, 'g');
+      linksGroup.setAttribute('class', 'links');
+      renderLinks(linksGroup);
+      svg.appendChild(linksGroup);
+
+      const nodesGroup = document.createElementNS(NS, 'g');
+      nodesGroup.setAttribute('class', 'nodes');
+      KINSHIP.forEach(node => renderNode(nodesGroup, node, lang));
+      svg.appendChild(nodesGroup);
+    }
+
+    renderTree('both');
+
     // Task 5: Language toggle
   </script>
 
