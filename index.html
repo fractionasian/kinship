@@ -711,9 +711,39 @@
       svg.appendChild(nodesGroup);
     }
 
-    renderTree('both');
+    // --- Language toggle ---
+    const LANG_KEY = 'kinship-lang';
 
-    // Task 5: Language toggle
+    function initLangToggle() {
+      const saved = localStorage.getItem(LANG_KEY) || 'both';
+      const container = document.getElementById('langToggle');
+      container.className = 'toggle-group';
+
+      const options = [
+        { label: 'Tiếng Việt', value: 'vi' },
+        { label: '中文', value: 'zh' },
+        { label: 'Both', value: 'both' },
+      ];
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.textContent = opt.label;
+        btn.dataset.lang = opt.value;
+        if (opt.value === saved) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          localStorage.setItem(LANG_KEY, opt.value);
+          renderTree(opt.value);
+        });
+        container.appendChild(btn);
+      });
+
+      return saved;
+    }
+
+    const initialLang = initLangToggle();
+    renderTree(initialLang);
   </script>
 
 </body>
