@@ -1026,8 +1026,8 @@
         } else {
           // Multiple children: bus bar pattern
 
-          const leftX = children[0].x;
-          const rightX = children[children.length - 1].x;
+          const leftX = Math.min(children[0].x, originX);
+          const rightX = Math.max(children[children.length - 1].x, originX);
 
           // 1. Vertical stem from origin down to bus bar
           const stem = document.createElementNS(NS, 'line');
