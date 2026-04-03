@@ -415,7 +415,7 @@
         id: 'fathers-older-brothers-wife',
         gen: 1, side: 'paternal', x: 190, y: 480,
         labels: {
-          en: "Father's older brother's wife",
+          en: "Father's elder bro's wife",
           vi: { term: 'bác gái', note: 'wife of bác; bác is base term for both spouses' },
           vi_alt: null,
           zh: { characters: '伯母', pinyin: 'bómǔ', note: 'wife of 伯伯' }
@@ -435,7 +435,7 @@
         id: 'fathers-younger-brothers-wife',
         gen: 1, side: 'paternal', x: 1340, y: 480,
         labels: {
-          en: "Father's younger brother's wife",
+          en: "Father's young. bro's wife",
           vi: { term: 'thím', note: 'specific term for wife of chú' },
           vi_alt: null,
           zh: { characters: '婶婶', pinyin: 'shěnshen', note: 'formal: 婶母 shěnmǔ' }
@@ -455,7 +455,7 @@
         id: 'fathers-sisters-husband',
         gen: 1, side: 'paternal', x: 880, y: 480,
         labels: {
-          en: "Father's sister's husband",
+          en: "Father's sister's hus.",
           vi: { term: 'dượng', note: 'Southern/Central: husband of cô' },
           vi_alt: { term: 'bác trai', note: "Northern: if wife is older than father" },
           zh: { characters: '姑父', pinyin: 'gūfu', note: "same term regardless of aunt's age" }
@@ -495,7 +495,7 @@
         id: 'mothers-sisters-husband',
         gen: 1, side: 'maternal', x: 2720, y: 480,
         labels: {
-          en: "Mother's sister's husband",
+          en: "Mother's sister's hus.",
           vi: { term: 'dượng', note: 'Southern/Central: husband of dì' },
           vi_alt: { term: 'chú', note: "Northern: some families use chú for dì's husband" },
           zh: { characters: '姨父', pinyin: 'yífu', note: 'variant: 姨丈 yízhàng' }
@@ -567,7 +567,7 @@
         id: 'paternal-cousin-male',
         gen: 2, side: 'paternal', x: 310, y: 720,
         labels: {
-          en: "Father's brother's son (堂)",
+          en: "Father's bro's son (堂)",
           vi: { term: 'Anh/Em họ (trai)', note: 'con bác or con chú; rank by parent seniority' },
           vi_alt: null,
           zh: { characters: '堂哥 / 堂弟', pinyin: 'táng gē / táng dì', note: '堂 = same surname (patrilineal)' }
@@ -577,7 +577,7 @@
         id: 'paternal-cousin-female',
         gen: 2, side: 'paternal', x: 540, y: 720,
         labels: {
-          en: "Father's brother's daughter (堂)",
+          en: "Father's bro's daughter (堂)",
           vi: { term: 'Chị/Em họ (gái)', note: 'con bác or con chú; rank by parent seniority' },
           vi_alt: null,
           zh: { characters: '堂姐 / 堂妹', pinyin: 'táng jiě / táng mèi', note: '堂 = same surname (patrilineal)' }
@@ -629,7 +629,7 @@
         id: 'brothers-child',
         gen: 3, side: 'self', x: 980, y: 940,
         labels: {
-          en: "Brother's child (nephew/niece)",
+          en: "Brother's child",
           vi: { term: 'cháu trai / cháu gái', note: 'Vietnamese does not distinguish brother\'s vs sister\'s child' },
           vi_alt: null,
           zh: { characters: '侄子 / 侄女', pinyin: 'zhízi / zhínǚ', note: '侄 root is specific to brother\'s children' }
@@ -639,7 +639,7 @@
         id: 'sisters-child',
         gen: 3, side: 'self', x: 750, y: 940,
         labels: {
-          en: "Sister's child (nephew/niece)",
+          en: "Sister's child",
           vi: { term: 'cháu trai / cháu gái', note: 'same term as brother\'s child; cháu covers all nephews/nieces' },
           vi_alt: null,
           zh: { characters: '外甥 / 外甥女', pinyin: 'wàishēng / wàishēngnǚ', note: '外 = outer; entirely different root from 侄' }
@@ -651,7 +651,7 @@
         id: 'sons-child',
         gen: 4, side: 'self', x: 1570, y: 1120,
         labels: {
-          en: "Son's child (paternal grandchild)",
+          en: "Son's child (grandchild)",
           vi: { term: 'cháu nội', note: 'from grandparent\'s perspective; nội = inner/paternal line' },
           vi_alt: null,
           zh: { characters: '孙子 / 孙女', pinyin: 'sūnzi / sūnnǚ', note: 'grandson / granddaughter via son' }
@@ -661,7 +661,7 @@
         id: 'daughters-child',
         gen: 4, side: 'self', x: 1800, y: 1120,
         labels: {
-          en: "Daughter's child (maternal grandchild)",
+          en: "Daughter's child (grandchild)",
           vi: { term: 'cháu ngoại', note: 'from grandparent\'s perspective; ngoại = outer/maternal line' },
           vi_alt: null,
           zh: { characters: '外孙 / 外孙女', pinyin: 'wàisūn / wàisūnnǚ', note: '外 = outer; daughter\'s children' }
@@ -733,11 +733,6 @@
         text.setAttribute('fill', line.color);
         text.setAttribute('font-size', line.size);
         if (line.weight) text.setAttribute('font-weight', line.weight);
-        // Constrain long text to node width
-        if (line.text.length > 28) {
-          text.setAttribute('textLength', NODE_W - 16);
-          text.setAttribute('lengthAdjust', 'spacingAndGlyphs');
-        }
         text.textContent = line.text;
         g.appendChild(text);
       });
