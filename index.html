@@ -810,16 +810,22 @@
         const toNode = nodeMap[conn.to];
         if (!fromNode || !toNode) return;
 
-        const line = document.createElementNS(NS, 'line');
-
         if (conn.type === 'child') {
-          line.setAttribute('x1', fromNode.x);
-          line.setAttribute('y1', fromNode.y + NODE_H_BASE);
-          line.setAttribute('x2', toNode.x);
-          line.setAttribute('y2', toNode.y);
-          line.setAttribute('stroke', 'var(--link-color)');
-          line.setAttribute('stroke-width', 1);
+          // Orthogonal connector: parent down → horizontal → child down
+          const x1 = fromNode.x;
+          const y1 = fromNode.y + NODE_H_BASE;
+          const x2 = toNode.x;
+          const y2 = toNode.y;
+          const midY = y1 + (y2 - y1) / 2;
+
+          const path = document.createElementNS(NS, 'path');
+          path.setAttribute('d', 'M ' + x1 + ' ' + y1 + ' V ' + midY + ' H ' + x2 + ' V ' + y2);
+          path.setAttribute('stroke', 'var(--link-color)');
+          path.setAttribute('stroke-width', 1);
+          path.setAttribute('fill', 'none');
+          parentGroup.appendChild(path);
         } else {
+          const line = document.createElementNS(NS, 'line');
           line.setAttribute('x1', fromNode.x);
           line.setAttribute('y1', fromNode.y + NODE_H_BASE / 2);
           line.setAttribute('x2', toNode.x);
@@ -827,9 +833,8 @@
           line.setAttribute('stroke', 'var(--spouse-link)');
           line.setAttribute('stroke-width', 1);
           line.setAttribute('stroke-dasharray', '4 3');
+          parentGroup.appendChild(line);
         }
-
-        parentGroup.appendChild(line);
       });
     }
 
