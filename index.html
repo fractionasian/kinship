@@ -561,7 +561,7 @@
       },
       {
         id: 'paternal-cousin-male',
-        gen: 2, side: 'paternal', x: 270, y: 720,
+        gen: 2, side: 'paternal', x: 660, y: 720,
         labels: {
           en: "paternal uncle's son (堂)",
           vi: { term: 'anh/em họ (trai)', note: 'con bác or con chú; rank by parent seniority' },
@@ -571,7 +571,7 @@
       },
       {
         id: 'paternal-cousin-female',
-        gen: 2, side: 'paternal', x: 520, y: 720,
+        gen: 2, side: 'paternal', x: 900, y: 720,
         labels: {
           en: "paternal uncle's daughter (堂)",
           vi: { term: 'chị/em họ (gái)', note: 'con bác or con chú; rank by parent seniority' },
@@ -580,23 +580,43 @@
         }
       },
       {
+        id: 'fathers-sisters-son',
+        gen: 2, side: 'paternal', x: 140, y: 720,
+        labels: {
+          en: "father's sister's son (表)",
+          vi: { term: 'anh/em họ (trai)', note: 'con cô; same Vietnamese term as all cousins' },
+          vi_alt: null,
+          zh: { characters: '表哥 / 表弟', pinyin: 'biǎo gē / biǎo dì', note: '表 not 堂 — different surname (married out)' }
+        }
+      },
+      {
+        id: 'fathers-sisters-daughter',
+        gen: 2, side: 'paternal', x: 400, y: 720,
+        labels: {
+          en: "father's sister's daughter (表)",
+          vi: { term: 'chị/em họ (gái)', note: 'con cô; same Vietnamese term as all cousins' },
+          vi_alt: null,
+          zh: { characters: '表姐 / 表妹', pinyin: 'biǎo jiě / biǎo mèi', note: '表 not 堂 — different surname (married out)' }
+        }
+      },
+      {
         id: 'maternal-cousin-male',
         gen: 2, side: 'maternal', x: 2640, y: 720,
         labels: {
-          en: "mother's side male cousin (表)",
-          vi: { term: 'anh/em họ (trai)', note: 'con cô, con cậu, or con dì' },
+          en: "mother's sibling's son (表)",
+          vi: { term: 'anh/em họ (trai)', note: 'con cậu or con dì' },
           vi_alt: null,
-          zh: { characters: '表哥 / 表弟', pinyin: 'biǎo gē / biǎo dì', note: '表 = different surname (cross-clan)' }
+          zh: { characters: '表哥 / 表弟', pinyin: 'biǎo gē / biǎo dì', note: '表 = different surname' }
         }
       },
       {
         id: 'maternal-cousin-female',
         gen: 2, side: 'maternal', x: 2890, y: 720,
         labels: {
-          en: "mother's side female cousin (表)",
-          vi: { term: 'chị/em họ (gái)', note: 'con cô, con cậu, or con dì' },
+          en: "mother's sibling's daughter (表)",
+          vi: { term: 'chị/em họ (gái)', note: 'con cậu or con dì' },
           vi_alt: null,
-          zh: { characters: '表姐 / 表妹', pinyin: 'biǎo jiě / biǎo mèi', note: '表 = different surname (cross-clan)' }
+          zh: { characters: '表姐 / 表妹', pinyin: 'biǎo jiě / biǎo mèi', note: '表 = different surname' }
         }
       },
 
@@ -788,6 +808,8 @@
         { from: 'father', to: 'younger-sister', type: 'child' },
         { from: 'fathers-older-brother', to: 'paternal-cousin-male', type: 'child' },
         { from: 'fathers-older-brother', to: 'paternal-cousin-female', type: 'child' },
+        { from: 'fathers-sister', to: 'fathers-sisters-son', type: 'child' },
+        { from: 'fathers-sister', to: 'fathers-sisters-daughter', type: 'child' },
         { from: 'mothers-brother', to: 'maternal-cousin-male', type: 'child' },
         { from: 'mothers-brother', to: 'maternal-cousin-female', type: 'child' },
 
