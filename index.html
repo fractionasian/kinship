@@ -9,7 +9,6 @@
   <meta property="og:description" content="Visual family tree showing kinship terms in Vietnamese and Chinese with English translations.">
   <meta property="og:type" content="website">
   <style>
-    /* Task 2: Flexoki palette + theme system */
     :root {
       --bg: #FFFCF0;
       --bg-2: #F2F0E5;
@@ -216,8 +215,25 @@
   </footer>
 
   <script>
-    // Task 2: Theme system
-    const THEME_KEY = 'kinship-theme';
+    // Shared toggle builder
+    function buildToggleGroup(containerId, storageKey, defaultValue, options, onSelect) {
+      const saved = localStorage.getItem(storageKey) || defaultValue;
+      const container = document.getElementById(containerId);
+      container.className = 'toggle-group';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.textContent = opt.label;
+        if (opt.value === saved) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          localStorage.setItem(storageKey, opt.value);
+          onSelect(opt.value);
+        });
+        container.appendChild(btn);
+      });
+      return saved;
+    }
 
     function getSystemTheme() {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -229,38 +245,18 @@
     }
 
     function initTheme() {
-      const saved = localStorage.getItem(THEME_KEY) || 'system';
+      const saved = buildToggleGroup('themeToggle', 'kinship-theme', 'system',
+        [{ label: 'Light', value: 'light' }, { label: 'Dark', value: 'dark' }, { label: 'System', value: 'system' }],
+        applyTheme
+      );
       applyTheme(saved);
-
-      const container = document.getElementById('themeToggle');
-      container.className = 'toggle-group';
-
-      const options = ['Light', 'Dark', 'System'];
-      options.forEach(label => {
-        const btn = document.createElement('button');
-        btn.textContent = label;
-        btn.dataset.choice = label.toLowerCase();
-        if (btn.dataset.choice === saved) btn.classList.add('active');
-        btn.addEventListener('click', () => {
-          const choice = btn.dataset.choice;
-          localStorage.setItem(THEME_KEY, choice);
-          container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          applyTheme(choice);
-        });
-        container.appendChild(btn);
-      });
-
-      const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      mq.addEventListener('change', () => {
-        const current = localStorage.getItem(THEME_KEY) || 'system';
-        if (current === 'system') applyTheme('system');
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if ((localStorage.getItem('kinship-theme') || 'system') === 'system') applyTheme('system');
       });
     }
 
     initTheme();
 
-    // Sources: Luong (1984), Huang & Jia, MSU Basic Vietnamese, Omniglot, Wikibooks
     // Vietnamese terms verified against education/vietnamese-kinship-terminology.md
     // Chinese terms verified against education/chinese-kinship-terminology.md
     const KINSHIP = [
@@ -287,7 +283,7 @@
         id: 'maternal-great-grandfather', gen: -1, side: 'maternal', x: 2530, y: 40,
         labels: {
           en: 'maternal great-grandfather',
-          vi: { term: 'Ông cụ ngoại', note: null },
+          vi: { term: 'ông cụ ngoại', note: null },
           vi_alt: null,
           zh: { characters: '曾外祖父', pinyin: 'zēngwàizǔfù', note: null }
         }
@@ -587,7 +583,7 @@
         id: 'maternal-cousin-male',
         gen: 2, side: 'maternal', x: 2640, y: 720,
         labels: {
-          en: "maternal-side male cousin (表)",
+          en: "mother's side male cousin (表)",
           vi: { term: 'anh/em họ (trai)', note: 'con cô, con cậu, or con dì' },
           vi_alt: null,
           zh: { characters: '表哥 / 表弟', pinyin: 'biǎo gē / biǎo dì', note: '表 = different surname (cross-clan)' }
@@ -597,7 +593,7 @@
         id: 'maternal-cousin-female',
         gen: 2, side: 'maternal', x: 2890, y: 720,
         labels: {
-          en: "maternal-side female cousin (表)",
+          en: "mother's side female cousin (表)",
           vi: { term: 'chị/em họ (gái)', note: 'con cô, con cậu, or con dì' },
           vi_alt: null,
           zh: { characters: '表姐 / 表妹', pinyin: 'biǎo jiě / biǎo mèi', note: '表 = different surname (cross-clan)' }
@@ -630,7 +626,7 @@
         gen: 3, side: 'self', x: 1020, y: 940,
         labels: {
           en: "brother's child",
-          vi: { term: 'cháu trai / cháu gái', note: 'Vietnamese does not distinguish brother\'s vs sister\'s child' },
+          vi: { term: 'cháu trai / cháu gái', note: 'trai = nephew; gái = niece. No brother\'s vs sister\'s distinction' },
           vi_alt: null,
           zh: { characters: '侄子 / 侄女', pinyin: 'zhízi / zhínǚ', note: '侄 root is specific to brother\'s children' }
         }
@@ -640,7 +636,7 @@
         gen: 3, side: 'self', x: 770, y: 940,
         labels: {
           en: "sister's child",
-          vi: { term: 'cháu trai / cháu gái', note: 'same term as brother\'s child; cháu covers all nephews/nieces' },
+          vi: { term: 'cháu trai / cháu gái', note: 'trai = nephew; gái = niece. Same term as brother\'s child' },
           vi_alt: null,
           zh: { characters: '外甥 / 外甥女', pinyin: 'wàishēng / wàishēngnǚ', note: '外 = outer; entirely different root from 侄' }
         }
@@ -669,14 +665,14 @@
       }
     ];
 
-    // ── Task 4: SVG rendering ──────────────────────────────────────────────
-
     const SVG_W = 3400;
     const SVG_H = 1200;
     const NODE_W = 230;
     const NODE_H_BASE = 85;
     const NODE_RX = 8;
-    const GEN_Y = [40, 240, 480, 720, 940, 1120];
+    const NS = 'http://www.w3.org/2000/svg';
+    const NODE_MAP = {};
+    KINSHIP.forEach(n => { NODE_MAP[n.id] = n; });
 
     function getSideColor(side) {
       if (side === 'paternal') return 'var(--paternal)';
@@ -719,7 +715,6 @@
     }
 
     function renderNode(parentGroup, node, lang) {
-      const NS = 'http://www.w3.org/2000/svg';
       const g = document.createElementNS(NS, 'g');
       g.setAttribute('class', 'node');
 
@@ -752,12 +747,7 @@
       parentGroup.appendChild(g);
     }
 
-    function renderLinks(parentGroup) {
-      const NS = 'http://www.w3.org/2000/svg';
-      const nodeMap = {};
-      KINSHIP.forEach(n => { nodeMap[n.id] = n; });
-
-      const connections = [
+    const CONNECTIONS = [
         // Great-grandparent spouse links
         { from: 'paternal-great-grandfather', to: 'paternal-great-grandmother', type: 'spouse' },
         { from: 'maternal-great-grandfather', to: 'maternal-great-grandmother', type: 'spouse' },
@@ -810,11 +800,12 @@
         // Children → grandchildren
         { from: 'son', to: 'sons-child', type: 'child' },
         { from: 'daughter', to: 'daughters-child', type: 'child' }
-      ];
+    ];
 
-      connections.forEach(conn => {
-        const fromNode = nodeMap[conn.from];
-        const toNode = nodeMap[conn.to];
+    function renderLinks(parentGroup) {
+      CONNECTIONS.forEach(conn => {
+        const fromNode = NODE_MAP[conn.from];
+        const toNode = NODE_MAP[conn.to];
         if (!fromNode || !toNode) return;
 
         if (conn.type === 'child') {
@@ -841,7 +832,6 @@
     }
 
     function renderTree(lang) {
-      const NS = 'http://www.w3.org/2000/svg';
       const svg = document.getElementById('treeSvg');
       while (svg.firstChild) svg.removeChild(svg.firstChild);
 
@@ -860,35 +850,11 @@
       svg.appendChild(nodesGroup);
     }
 
-    // --- Language toggle ---
-    const LANG_KEY = 'kinship-lang';
-
     function initLangToggle() {
-      const saved = localStorage.getItem(LANG_KEY) || 'both';
-      const container = document.getElementById('langToggle');
-      container.className = 'toggle-group';
-
-      const options = [
-        { label: 'Tiếng Việt', value: 'vi' },
-        { label: '中文', value: 'zh' },
-        { label: 'Both', value: 'both' },
-      ];
-
-      options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.textContent = opt.label;
-        btn.dataset.lang = opt.value;
-        if (opt.value === saved) btn.classList.add('active');
-        btn.addEventListener('click', () => {
-          container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          localStorage.setItem(LANG_KEY, opt.value);
-          renderTree(opt.value);
-        });
-        container.appendChild(btn);
-      });
-
-      return saved;
+      return buildToggleGroup('langToggle', 'kinship-lang', 'both',
+        [{ label: 'Tiếng Việt', value: 'vi' }, { label: '中文', value: 'zh' }, { label: 'Both', value: 'both' }],
+        lang => renderTree(lang)
+      );
     }
 
     const initialLang = initLangToggle();
